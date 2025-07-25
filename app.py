@@ -94,7 +94,7 @@ st.markdown("""
 # Create form for input
 with st.form("prediction_form"):
     col1, col2, col3 = st.columns(3)
-    
+          
     with col1:
         st.markdown("##### Patient Demographics")
         age = st.number_input('Age', 20, 100, 50)
