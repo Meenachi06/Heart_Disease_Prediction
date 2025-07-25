@@ -1,4 +1,4 @@
-name: Deploy Streamlit App
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -8,11 +8,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setup Python
+    - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.9'
@@ -22,8 +22,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Deploy to Streamlit Cloud
-      uses: streamlit/cloud-action@v1.0.0
+    - name: Create Static Build
+      run: |
+        mkdir _site
+        cp -r * _site/
+        echo "streamlit run app.py" > _site/start.sh
+        chmod +x _site/start.sh
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        app_name: "heart-disease-prediction"
-        streamlit_api_key: ${{ secrets.STREAMLIT_API_KEY }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_site
