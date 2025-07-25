@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Heart-Disease-Prediction-using-Machine-Learning
 Thus preventing Heart diseases has become more than necessary. Good data-driven systems for predicting heart diseases can improve the entire research and prevention process, making sure that more people can live healthy lives. This is where Machine Learning comes into play. Machine Learning helps in predicting the Heart diseases, and the predictions made are quite accurate.
 
@@ -21,3 +22,7 @@ Accuracy achieved: 95% (Random Forest)
 
 Dataset used: https://www.kaggle.com/ronitf/heart-disease-uci
 
+=======
+# Heart_Disease_Prediction
+This project predicts heart disease using machine learning algorithms like Logistic Regression and Random Forest. It analyzes patient data such as age, blood pressure, and cholesterol to assess risk. The model helps in early detection and can be integrated with a simple user interface for predictions.
+>>>>>>> 7c3781bbfb3145a0cc4aa5b1f31858536c601b53
