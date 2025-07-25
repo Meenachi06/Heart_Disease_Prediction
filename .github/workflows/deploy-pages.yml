@@ -24,15 +24,18 @@ jobs:
 
     - name: Create Static Build
       run: |
-        mkdir -p build
-        cp -r . build/
-        rm -rf build/build || true
-        echo "streamlit run app.py" > build/start.sh
-        chmod +x build/start.sh
+        rm -rf _site || true
+        mkdir -p _site
+        cp app.py _site/
+        cp heart.csv _site/
+        cp requirements.txt _site/
+        cp README.md _site/
+        echo "streamlit run app.py" > _site/start.sh
+        chmod +x _site/start.sh
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+        publish_dir: ./_site
         enable_jekyll: false
