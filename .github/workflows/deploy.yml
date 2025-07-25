@@ -1,0 +1,29 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+        
+    - name: Deploy to GitHub Pages
+      uses: crazy-max/ghaction-github-pages@v2.5.0
+      with:
+        target_branch: gh-pages
+        build_dir: .
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
